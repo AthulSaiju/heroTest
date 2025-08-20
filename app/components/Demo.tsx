@@ -146,7 +146,7 @@ const Demo = () => {
                     border border-white/40 dark:border-white/10
                     shadow-[0px_2px_10px_rgba(0,0,0,0.1)]
                     bg-gradient-to-r from-white/70 to-emerald-50 dark:from-white/10 dark:to-transparent
-                    hover:scale-105 hover:cursor-grab transition-all duration-500 ease-in-out"
+                    hover:scale-105 hover:cursor-grab hover:bg-white transition-all duration-500 ease-in-out"
                 >
                   <b.Icon size={24} strokeWidth={1.6} style={{ color: b.color }} />
                 </div>
