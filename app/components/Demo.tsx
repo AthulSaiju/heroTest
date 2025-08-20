@@ -21,22 +21,167 @@ import {
 
 gsap.registerPlugin(ScrollTrigger);
 
-const BUBBLES = [
-  { id: "b1", Icon: Box, x: -630, y: -360, color: "#7c3aed", start: "top top", end: "+=1000", tooltipSide: "bottom" },
-  { id: "b2", Icon: Tag, x: -450, y: -230, color: "#fb923c", start: "top+=200 top", end: "+=600", tooltipSide: "bottom" },
-  { id: "b3", Icon: ShoppingCart, x: 580, y: -332, color: "#10b981", start: "top+=500 top", end: "+=800", tooltipSide: "bottom" },
-  { id: "b4", Icon: Users, x: -670, y: -123, color: "#a78bfa", start: "top+=300 top", end: "+=800", tooltipSide: "bottom" },
-  { id: "b5", Icon: Search, x: 427, y: -130, color: "#3b82f6", start: "top+=400 top", end: "+=800", tooltipSide: "bottom" },
-  { id: "b6", Icon: Upload, x: 622, y: 30, color: "#2dd4bf", start: "top+=500 top", end: "+=600", tooltipSide: "top" },
-  { id: "b7", Icon: Download, x: -460, y: 0, color: "#06b6d4", start: "top+=600 top", end: "+=400", tooltipSide: "bottom" },
-  { id: "b8", Icon: Grid, x: 370, y: 160, color: "#fbbf24", start: "top+=700 top", end: "+=500", tooltipSide: "right" },
-  { id: "b9", Icon: Star, x: -340, y: 200, color: "#fbbf24", start: "top+=750 top", end: "+=400", tooltipSide: "right" },
-  { id: "b10", Icon: Database, x: 105, y: 305, color: "#ec4899", start: "top+=800 top", end: "+=500", tooltipSide: "left" },
-  { id: "b11", Icon: Heart, x: -630, y: 147, color: "#fb7185", start: "top+=850 top", end: "+=400", tooltipSide: "right" },
-  { id: "b12", Icon: Headphones, x: -100, y: 198, color: "#9ca3af", start: "top+=800 top", end: "+=400", tooltipSide: "right" },
+type BubbleItem = {
+  id: string;
+  Icon: typeof Box;
+  x: number;
+  y: number;
+  color: string;
+  start: string;
+  end: string;
+  tooltipSide: "left" | "right" | "top" | "bottom";
+  title: string;
+  desc: string;
+};
+
+const BUBBLES: BubbleItem[] = [
+  {
+    id: "b1",
+    Icon: Box,
+    x: -630,
+    y: -360,
+    color: "#7c3aed",
+    start: "top top",
+    end: "+=1000",
+    tooltipSide: "bottom",
+    title: "3D Models",
+    desc: "Browse thousands of high-quality 3D models for your projects. Filter by category, style, format and more.",
+  },
+  {
+    id: "b2",
+    Icon: Tag,
+    x: -450,
+    y: -230,
+    color: "#fb923c",
+    start: "top+=200 top",
+    end: "+=600",
+    tooltipSide: "bottom",
+    title: "Pricing",
+    desc: "Flexible pricing options for creators and businesses",
+  },
+  {
+    id: "b3",
+    Icon: ShoppingCart,
+    x: 580,
+    y: -332,
+    color: "#10b981",
+    start: "top+=500 top",
+    end: "+=800",
+    tooltipSide: "bottom",
+    title: "Checkout",
+    desc: "Fast and secure purchases for your 3d model Purchases",
+  },
+  {
+    id: "b4",
+    Icon: Users,
+    x: -670,
+    y: -123,
+    color: "#a78bfa",
+    start: "top+=300 top",
+    end: "+=800",
+    tooltipSide: "bottom",
+    title: "Community",
+    desc: "Join thousands of #D artists and designers",
+  },
+  {
+    id: "b5",
+    Icon: Search,
+    x: 427,
+    y: -130,
+    color: "#3b82f6",
+    start: "top+=400 top",
+    end: "+=800",
+    tooltipSide: "bottom",
+    title: "Search",
+    desc: "Find exactly what you need with powerful search tools.",
+  },
+  {
+    id: "b6",
+    Icon: Upload,
+    x: 622,
+    y: 30,
+    color: "#2dd4bf",
+    start: "top+=500 top",
+    end: "+=600",
+    tooltipSide: "top",
+    title: "Upload Models",
+    desc: "Share your creations with the world. Upload your 3D models and reach thousands of potential buyers.",
+  },
+  {
+    id: "b7",
+    Icon: Download,
+    x: -460,
+    y: 0,
+    color: "#06b6d4",
+    start: "top+=600 top",
+    end: "+=400",
+    tooltipSide: "bottom",
+    title: "Downloads",
+    desc: "Access your purchased models anytime, anywhere.",
+  },
+  {
+    id: "b8",
+    Icon: Grid,
+    x: 370,
+    y: 160,
+    color: "#fbbf24",
+    start: "top+=700 top",
+    end: "+=500",
+    tooltipSide: "right",
+    title: "Categories",
+    desc: "Explore our organized collection of categories",
+  },
+  {
+    id: "b9",
+    Icon: Star,
+    x: -340,
+    y: 200,
+    color: "#fbbf24",
+    start: "top+=750 top",
+    end: "+=400",
+    tooltipSide: "right",
+    title: "Featured",
+    desc: "Discovered our handpicked selection of premium 3D Models and assets from top creators",
+  },
+  {
+    id: "b10",
+    Icon: Database,
+    x: 105,
+    y: 305,
+    color: "#ec4899",
+    start: "top+=800 top",
+    end: "+=500",
+    tooltipSide: "left",
+    title: "Collections",
+    desc: "Curated sets of models for specific project and needs",
+  },
+  {
+    id: "b11",
+    Icon: Heart,
+    x: -630,
+    y: 147,
+    color: "#fb7185",
+    start: "top+=850 top",
+    end: "+=400",
+    tooltipSide: "bottom",
+    title: "Favorites",
+    desc: "Save models you love for quick access later",
+  },
+  {
+    id: "b12",
+    Icon: Headphones,
+    x: -100,
+    y: 198,
+    color: "#9ca3af",
+    start: "top+=800 top",
+    end: "+=400",
+    tooltipSide: "right",
+    title: "Support",
+    desc: "Get help when you need it from our friendly support team",
+  },
 ];
 
-const Demo = () => {
+export default function Demo() {
   const bubbleRefs = useRef<(HTMLDivElement | null)[]>([]);
   const titleRef = useRef<HTMLDivElement | null>(null);
   const paraRef = useRef<HTMLParagraphElement | null>(null);
@@ -45,6 +190,7 @@ const Demo = () => {
   useEffect(() => {
     bubbleRefs.current = bubbleRefs.current.slice(0, BUBBLES.length);
 
+    // bubble animations
     bubbleRefs.current.forEach((el, i) => {
       if (!el) return;
       const b = BUBBLES[i];
@@ -63,13 +209,14 @@ const Demo = () => {
       });
     });
 
-    const textTargets = [titleRef.current, paraRef.current, btnRef.current].filter(Boolean) as Element[];
-
-    let tl: gsap.core.Timeline | null = null;
-
+    // text stagger timeline near the end
+    const textTargets = [
+      titleRef.current,
+      paraRef.current,
+      btnRef.current,
+    ].filter(Boolean) as Element[];
     if (textTargets.length) {
-      // master timeline spans the whole scroll area
-      tl = gsap.timeline({
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: ".scroll-container",
           start: "top top",
@@ -78,13 +225,11 @@ const Demo = () => {
         },
       });
 
-     
-      const placement = 1;
-
+      const placement = 0.98;
       tl.to(
         textTargets,
         {
-          y: -114,
+          y: -48,
           opacity: 0,
           ease: "sine.out",
           stagger: 0.18,
@@ -93,37 +238,32 @@ const Demo = () => {
       );
     }
 
-   
     return () => {
       ScrollTrigger.getAll().forEach((st) => st.kill());
       gsap.killTweensOf(bubbleRefs.current);
       gsap.killTweensOf([titleRef.current, paraRef.current, btnRef.current]);
-      if (tl && tl.scrollTrigger) {
-        try {
-          tl.scrollTrigger.kill();
-        } catch (e) {}
-      }
     };
   }, []);
 
-  const getTooltipPosition = (side: string) => {
+  const getTooltipPosition = (side: BubbleItem["tooltipSide"]) => {
     switch (side) {
       case "left":
-        return "right-full mr-2 top-1/2 -translate-y-1/2";
+        return "right-full mr-3 top-1/2 -translate-y-1/2 -translate-x-2 group-hover:translate-x-0";
       case "right":
-        return "left-full ml-2 top-1/2 -translate-y-1/2";
+        return "left-full ml-3 top-1/2 -translate-y-1/2 translate-x-2 group-hover:translate-x-0";
       case "top":
-        return "bottom-full mb-2 left-1/2 -translate-x-1/2";
+        return "bottom-full mb-3 left-1/2 -translate-x-1/2 -translate-y-2 group-hover:translate-y-0";
       case "bottom":
-        return "top-full mt-2 left-1/2 -translate-x-1/2";
+        return "top-full mt-3 left-1/2 -translate-x-1/2 translate-y-2 group-hover:translate-y-0";
       default:
-        return "right-full mr-2 top-1/2 -translate-y-1/2";
+        return "left-full ml-3 top-1/2 -translate-y-1/2 translate-x-2 group-hover:translate-x-0";
     }
   };
 
   return (
     <div className="scroll-container h-[190vh]">
       <div className="sticky top-[9vh] bg-neutral-950 h-[92vh] flex items-center justify-center z-10">
+        {/* Bubble Layer */}
         <div className="absolute inset-0 z-10">
           <div className="relative h-full w-full">
             {BUBBLES.map((b, i) => (
@@ -132,13 +272,13 @@ const Demo = () => {
                 ref={(el) => {
                   bubbleRefs.current[i] = el;
                 }}
-                className="absolute top-1/2 left-1/2 will-change-transform group pointer-events-auto"
+                className="absolute top-1/2 left-1/2 will-change-transform"
                 style={{
                   transform: `translate(${b.x}px, ${b.y}px)`,
                   zIndex: 50 - i,
                 }}
               >
-                {/* Bubble */}
+                {/* Bubble container (hover target) */}
                 <div
                   className="group relative flex h-18 w-18 items-center justify-center rounded-full
                     backdrop-blur-lg
@@ -146,21 +286,45 @@ const Demo = () => {
                     border border-white/40 dark:border-white/10
                     shadow-[0px_2px_10px_rgba(0,0,0,0.1)]
                     bg-gradient-to-r from-white/70 to-emerald-50 dark:from-white/10 dark:to-transparent
-                    hover:scale-105 hover:cursor-grab hover:bg-white transition-all duration-500 ease-in-out"
+                    hover:scale-105 hover:cursor-grab hover:bg-white transition-all duration-300 ease-in-out"
                 >
-                  <b.Icon size={24} strokeWidth={1.6} style={{ color: b.color }} />
-                </div>
+                  <b.Icon
+                    size={24}
+                    strokeWidth={1.6}
+                    style={{ color: b.color }}
+                  />
+                  {/* Tooltip */}
+                  <div
+                    className={`absolute opacity-0 scale-95 pointer-events-none
+                      group-hover:opacity-100 group-hover:scale-100
+                      transition-all duration-550 ease-in-out
+                       min-w-[300px] border-2 border-[#4a4a4a] border-dotted
+                      px-5 py-5 rounded-lg z-25 bg-[#171717] text-white text-xs
+                      ${getTooltipPosition(b.tooltipSide)}`}
+                  >
+                    <div className="flex gap-3 items-start ">
+                      <div
+                        className="flex-shrink-0 h-10 w-10 rounded-full flex items-center justify-center"
+                        style={{ background: "rgba(255,255,255)" }}
+                      >
+                        <b.Icon
+                          size={19}
+                          strokeWidth={2}
+                          style={{ color: b.color }}
+                        />
+                      </div>
 
-                {/* Tooltip */}
-                <div
-                  className={`absolute opacity-0 scale-95 
-                    group-hover:opacity-100 group-hover:scale-100
-                    transition-all duration-500 ease-in-out 
-                    pointer-events-none
-                    h-[120px] w-[250px] border border-[#4a4a4a] border-dotted 
-                    px-3 py-1 rounded-md z-25 bg-[#171717] text-white text-xs 
-                    ${getTooltipPosition(b.tooltipSide)}`}
-                />
+                      <div className="min-w-0">
+                        <div className="font-semibold text-sm leading-5">
+                          {b.title}
+                        </div>
+                        <div className="text-[13px] text-center text-gray-400  mt-3">
+                          {b.desc}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -168,6 +332,7 @@ const Demo = () => {
 
         {/* Text + Button Section */}
         <div className="absolute w-full lg:top-[25%] flex flex-col items-center justify-center gap-10 pointer-events-none">
+          {/* Title wrapper */}
           <div
             ref={titleRef}
             className="w-[50%] h-[140px] lg:text-[48px] text-center text-[#E6E6E6] font-bold"
@@ -188,7 +353,10 @@ const Demo = () => {
             />
           </div>
 
-          <p ref={paraRef} className="lg:text-[18px] text-center text-[#A3A3A3] mt-15px tracking-wide">
+          <p
+            ref={paraRef}
+            className="lg:text-[18px] text-center text-[#A3A3A3] mt-15px tracking-wide"
+          >
             Your one-stop digital platform for 3D models and digital creations.
             <br />
             Join our community of creators and collectors today.
@@ -207,6 +375,4 @@ const Demo = () => {
       <div className="h-[100vh]" />
     </div>
   );
-};
-
-export default Demo;
+}
