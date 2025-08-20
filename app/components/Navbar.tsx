@@ -5,9 +5,9 @@ import { Search, Upload, User, MessageCircle } from "lucide-react";
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="fixed top-0 w-full h-[81px] bg-[#1a1a1a] flex items-center justify-between px-20 z-50">
+    <nav className="fixed top-0 w-full h-[81px] bg-[#1a1a1a] flex items-center justify-between px-16 z-50">
       {/* Left - Logo + Beta */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-4">
         <span className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">
           3dimli
         </span>
@@ -16,8 +16,8 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Center - Nav links + Search */}
-      <div className="flex items-center gap-6 flex-1">
-        <div className="flex items-center gap-6 text-sm font-medium text-gray-300">
+      <div className="flex  gap-6 flex-1 ml-6 ">
+        <div className="flex items-center gap-6 text-sm font-medium text-gray-300 ">
           <a href="#" className="hover:text-white">Home</a>
           <a href="#" className="hover:text-white">Discover</a>
           <a href="#" className="hover:text-white">Features</a>
@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Search box */}
-        <div className="ml-6 flex items-center bg-[#2e2e2e] rounded-full px-3 py-1 w-full max-w-md">
+        <div className=" flex items-center bg-[#2e2e2e] rounded-xl px-3 py-2 w-full mr-5">
           <input
             type="text"
             placeholder="Search..."
@@ -37,13 +37,15 @@ const Navbar: React.FC = () => {
 
       {/* Right - Buttons + Profile */}
       <div className="flex items-center gap-3">
-        <button className="flex items-center gap-2 bg-blue-900 hover:bg-blue-800 text-white px-6 py-3 rounded-xl text-lg font-medium">
+        <button className="flex items-center gap-2 bg-[#5865F2] dark:bg-gradient-to-bl dark:from-gray-900 dark:to-primary
+ text-white px-6 py-3 rounded-xl text-lg font-medium">
           <MessageCircle size={16} />
           Discord
         </button>
         
         <button
-            className="relative flex items-center gap-2 bg-blue-900 hover:bg-blue-800 text-white px-6 py-3 rounded-xl text-lg font-medium overflow-x-hidden"
+            className="relative flex items-center gap-2 bg-[#5865F2] dark:bg-gradient-to-bl dark:from-gray-900 dark:to-primary
+ text-white px-6 py-3 rounded-xl text-lg font-medium overflow-x-hidden"
           >
             <Upload size={16} />
             <span className="relative z-10">Upload</span>
